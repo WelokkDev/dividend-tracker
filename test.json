@@ -1,0 +1,20 @@
+[
+  {
+    "ticker": "AAPL",
+    "currency": "USD",
+    "dividends": [
+      { "ex_date": "2023-11-10", "amount": 0.24, "exchange_rate": null },
+      { "ex_date": "2023-08-11", "amount": 0.24, "exchange_rate": null },
+      { "ex_date": "2023-05-12", "amount": 0.24, "exchange_rate": null }
+    ]
+  },
+  {
+    "ticker": "RY.TO",
+    "currency": "CAD",
+    "dividends": [
+      { "ex_date": "2023-10-25", "amount": 1.35, "exchange_rate": null },
+      { "ex_date": "2023-07-26", "amount": 1.35, "exchange_rate": null },
+      { "ex_date": "2023-04-25", "amount": 1.32, "exchange_rate": null }
+    ]
+  }
+]

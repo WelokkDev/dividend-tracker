@@ -1,17 +1,21 @@
+import yfinance as yf
+import json
+import pandas as pd
+from pathlib import Path
+
 class App():
-    def __init__(self, root, dataManager):
+    def __init__(self, root):
         self.root = root
         self.root.title("Dividend Tracker")
         self.root.geometry("600x500")
 
-        self.dataManager = dataManager
-
-        self.tickers = ["AAPL", "MSFT", "GOOG"]
-
         self.style = ttk.Style()
         self.style.theme_use("clam")
 
+        self.dataManager = DividendDataManager()
         self.setup_ui()
+
+        
 
     def setup_ui(self):
         # Frame for ticker list
@@ -27,8 +31,8 @@ class App():
         self.ticker_listbox.config(yscrollcommand=scrollbar.set)
 
         # Populate listbox
-        for ticker in self.tickers:
-           self.ticker_listbox.insert(tk.END, ticker)
+        for ticker in self.dataManager.tickers:
+           self.ticker_listbox.insert(tk.END, ticker.symbol)
 
         # Frame for adding/removing tickers
         control_frame = ttk.Frame(self.root)
@@ -62,27 +66,43 @@ class App():
 
     def add_ticker(self):
         new_ticker = self.ticker_entry.get().strip().upper()
-        if new_ticker and new_ticker not in self.tickers:
-            self.tickers.append(new_ticker)
+        if new_ticker and new_ticker not in self.dataManager.tickers:
+            self.dataManager.addTicker(new_ticker)
             self.ticker_listbox.insert(tk.END, new_ticker)
         self.ticker_entry.delete(0, tk.END)
-        self.dataManager.get_dividends(new_ticker)
 
 class DividendDataManager:
-    def __init__(self, data):
-        self.data = data
+    # Gather all ticker data necessary for excel and json...
+    def __init__(self):
+        self.tickers = []
+        path = Path("dividend_data.json")
+        if path.is_file():
+            with open(path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                for item in data:
+                    self.tickers.append(StockTicker(item.get("ticker")))
 
-    def get_dividends(self, ticker):
-        stock = self.data.Ticker(ticker)  # self.data is yfinance
-        dividends = stock.get_dividends()
-        print(dividends)
 
+
+
+    def addTicker(self, symbol):
+        ticker = StockTicker(symbol)
+        ticker.fetch_dividends()
+        self.tickers.append(ticker)
+
+
+class StockTicker:
+    def __init__(self, symbol):
+        self.symbol = symbol
+
+    def fetch_dividends(self):
+        print("Testing, dividends fetched for", self.symbol)
 
 if __name__ == "__main__":
     import tkinter as tk
     from tkinter import ttk
     import ctypes
-    import yfinance as yf
+    
 
    
     # Optional: make app DPI aware on Windows
@@ -91,10 +111,10 @@ if __name__ == "__main__":
     except Exception:
         pass
 
-    dataManager = DividendDataManager(yf)
+  
 
     root = tk.Tk()  # Create the main Tkinter window
-    app = App(root, dataManager)  # Create your app instance
+    app = App(root)  # Create your app instance
 
 
 
