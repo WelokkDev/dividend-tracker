@@ -29,7 +29,6 @@ class App():
         scrollbar = ttk.Scrollbar(list_frame, orient="vertical", command=self.ticker_listbox.yview)
         scrollbar.pack(side="right", fill="y")
         self.ticker_listbox.config(yscrollcommand=scrollbar.set)
-
         # Populate listbox
         for ticker in self.dataManager.tickers:
            self.ticker_listbox.insert(tk.END, ticker.symbol)
@@ -86,17 +85,63 @@ class DividendDataManager:
 
 
     def addTicker(self, symbol):
-        ticker = StockTicker(symbol)
-        ticker.fetch_dividends()
+        ticker = StockTicker(symbol, True)
         self.tickers.append(ticker)
+        self.add_to_json(ticker)
+
+    def add_to_json(self, ticker):
+        path = Path("dividend_data.json")
+        if path.is_file():
+            with open(path, "r", encoding="utf-8") as f:
+                try:
+                    data = json.load(f)
+                except json.JSONDecodeError:
+                    data = []
+        else:
+            data = []
+
+        data.append(ticker.data)
+                
+        with open(path, "w") as f:
+            json.dump(data, f)
+
+    def remove_from_json(self, ticker):
+        print("remove ticker")
 
 
 class StockTicker:
-    def __init__(self, symbol):
-        self.symbol = symbol
+    def __init__(self, symbol, new=False):
+        self.symbol = symbol.strip().upper()
+        self.data = {
+            "ticker": self.symbol,
+            "currency": "USD",
+            "dividends": []
+        }
+        if new == True:
+            if self.symbol.endswith((".TO", ".V", ".CN", ":CA")):
+                self.fetch_tsx_dividends()
+            else:
+                self.fetch_dividends()
+
+    def fetch_tsx_dividends(self):
+        self.ticker = yf.Ticker(self.symbol)
+        self.data["currency"] = "CAD"
+        # Fetch the last 3 months of dividend data
+        div_series = self.ticker.get_dividends(period="3mo")
+
+        # Store as list of dicts
+        self.data["dividends"] = [
+            {"ex_dividend_date": date.strftime("%Y-%m-%d"), "amount": float(amount)}
+            for date, amount in div_series.items()
+        ]
+        print("Dividends for TSX stocks are being fetched!")
+        print(self.data)
 
     def fetch_dividends(self):
-        print("Testing, dividends fetched for", self.symbol)
+        print("Dividends for US stocks are being fetched!")
+    
+
+
 
 if __name__ == "__main__":
     import tkinter as tk
