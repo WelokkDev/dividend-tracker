@@ -2,6 +2,18 @@ import yfinance as yf
 import json
 import pandas as pd
 from pathlib import Path
+from dotenv import load_dotenv
+import os
+from polygon import RESTClient
+from openpyxl import Workbook
+from openpyxl.styles import Font, PatternFill, Alignment
+
+# Create a new workbook
+wb = Workbook()
+ws = wb.active
+ws.title = "Dividends"
+
+load_dotenv()
 
 class App():
     def __init__(self, root):
@@ -50,7 +62,7 @@ class App():
         bottom_frame = ttk.Frame(self.root)
         bottom_frame.pack(fill="x", padx=10, pady=10)
 
-        update_button = ttk.Button(bottom_frame, text="Rebuild Excel", command=lambda: print("Fetching dividends..."))
+        update_button = ttk.Button(bottom_frame, text="Rebuild Excel", command=self.build_excel)
         update_button.pack(side="left", padx=(0,10))
 
         export_button = ttk.Button(bottom_frame, text="Open Excel", command=lambda: print("Exporting..."))
@@ -72,11 +84,63 @@ class App():
             self.ticker_listbox.insert(tk.END, new_ticker)
         self.ticker_entry.delete(0, tk.END)
 
+    def build_excel(self):
+        path = Path("dividend_data.json")
+        if not path.is_file():
+            raise FileNotFoundError("dividend_data.json not found")
+
+        # Load JSON data
+        with open(path, "r", encoding="utf-8") as f:
+            dividend_data = json.load(f)
+
+        # Create workbook
+        wb = Workbook()
+        ws = wb.active
+        ws.title = "Dividends"
+
+        # Headers
+        headers = ["Ex-Date", "Ticker", "Currency", "Dividend"]
+        header_font = Font(bold=True, color="FFFFFF")
+        header_fill = PatternFill(start_color="4F81BD", end_color="4F81BD", fill_type="solid")
+        alignment = Alignment(horizontal="center", vertical="center")
+
+        for col_num, title in enumerate(headers, 1):
+            cell = ws.cell(row=1, column=col_num, value=title)
+            cell.font = header_font
+            cell.fill = header_fill
+            cell.alignment = alignment
+
+        # Optional: column widths
+        ws.column_dimensions["A"].width = 15
+        ws.column_dimensions["B"].width = 12
+        ws.column_dimensions["C"].width = 10
+        ws.column_dimensions["D"].width = 12
+
+        # Fill rows
+        row_num = 2
+        for entry in dividend_data:
+            ticker = entry.get("ticker")
+            currency = entry.get("currency", "USD")
+            for div in entry.get("dividends", []):
+                ex_date = div.get("ex_date") or div.get("ex_dividend_date")
+                amount = div.get("amount")
+                ws.cell(row=row_num, column=1, value=ex_date)
+                ws.cell(row=row_num, column=2, value=ticker)
+                ws.cell(row=row_num, column=3, value=currency)
+                ws.cell(row=row_num, column=4, value=amount)
+                row_num += 1
+
+        # Save workbook
+        output_path = "dividends-sheet.xlsx"
+        wb.save(output_path)
+        print(f"Excel file saved to {output_path}")
+        return output_path
 
 
 class DividendDataManager:
     # Gather all ticker data necessary for excel and json...
     def __init__(self):
+        self.client = RESTClient(os.getenv("POLYGON_API_KEY"))
         self.tickers = []
         path = Path("dividend_data.json")
         if path.is_file():
