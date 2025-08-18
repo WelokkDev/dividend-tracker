@@ -21,27 +21,6 @@
     ]
   },
   {
-    "ticker": "MSFT",
-    "currency": "USD",
-    "dividends": [
-      {
-        "ex_date": "2025-10-25",
-        "amount": 1.35,
-        "exchange_rate": null
-      },
-      {
-        "ex_date": "2025-07-26",
-        "amount": 1.35,
-        "exchange_rate": null
-      },
-      {
-        "ex_date": "2024-04-25",
-        "amount": 1.32,
-        "exchange_rate": null
-      }
-    ]
-  },
-  {
     "ticker": "RY.TO",
     "currency": "CAD",
     "dividends": [

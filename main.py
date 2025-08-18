@@ -61,14 +61,18 @@ class App():
     def update_ticker_list(self):
         selected = self.ticker_listbox.curselection()
         if selected:
+            symbol = self.ticker_listbox.get(selected[0])
             self.ticker_listbox.delete(selected[0])
+            self.dataManager.remove_ticker(symbol)
 
     def add_ticker(self):
         new_ticker = self.ticker_entry.get().strip().upper()
         if new_ticker and new_ticker not in self.dataManager.tickers:
-            self.dataManager.addTicker(new_ticker)
+            self.dataManager.add_ticker(new_ticker)
             self.ticker_listbox.insert(tk.END, new_ticker)
         self.ticker_entry.delete(0, tk.END)
+
+
 
 class DividendDataManager:
     # Gather all ticker data necessary for excel and json...
@@ -84,7 +88,7 @@ class DividendDataManager:
 
 
 
-    def addTicker(self, symbol):
+    def add_ticker(self, symbol):
         ticker = StockTicker(symbol, True)
         self.tickers.append(ticker)
         self.add_to_json(ticker)
@@ -103,10 +107,32 @@ class DividendDataManager:
         data.append(ticker.data)
                 
         with open(path, "w") as f:
-            json.dump(data, f)
+            json.dump(data, f, indent=2)
 
-    def remove_from_json(self, ticker):
-        print("remove ticker")
+    def remove_ticker(self, symbol):
+        self.tickers = [t for t in self.tickers if t.symbol != symbol]
+        print(symbol)
+        print(self.tickers)
+        self.remove_from_json(symbol)
+
+    def remove_from_json(self, symbol):
+        path = Path("dividend_data.json")
+        
+        if path.is_file():
+            with open(path, "r", encoding="utf-8") as f:
+                try:
+                    data = json.load(f)
+                except json.JSONDecodeError:
+                    data = []
+
+        # filter out the ticker
+        data = [entry for entry in data if entry.get("ticker") != symbol]
+
+        # write back updated data
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=2)
+        
+
 
 
 class StockTicker:
