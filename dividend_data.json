@@ -1,22 +1,333 @@
 [
   {
+    "ticker": "CONY",
+    "currency": "USD",
+    "dividends": [
+      {
+        "ex_dividend_date": "2025-08-21",
+        "declaration_date": "2024-12-27",
+        "record_date": "2025-08-21",
+        "payment_date": "2025-08-22",
+        "amount": "0.3438"
+      },
+      {
+        "ex_dividend_date": "2025-07-24",
+        "declaration_date": "2024-12-27",
+        "record_date": "2025-07-24",
+        "payment_date": "2025-07-25",
+        "amount": "0.7951"
+      },
+      {
+        "ex_dividend_date": "2025-06-26",
+        "declaration_date": "2024-12-27",
+        "record_date": "2025-06-26",
+        "payment_date": "2025-06-27",
+        "amount": "0.5354"
+      },
+      {
+        "ex_dividend_date": "2025-05-29",
+        "declaration_date": "2025-02-20",
+        "record_date": "2025-05-29",
+        "payment_date": "2025-05-30",
+        "amount": "0.7351"
+      },
+      {
+        "ex_dividend_date": "2025-05-01",
+        "declaration_date": "2024-12-27",
+        "record_date": "2025-05-01",
+        "payment_date": "2025-05-02",
+        "amount": "0.651"
+      },
+      {
+        "ex_dividend_date": "2025-04-03",
+        "declaration_date": "2024-12-27",
+        "record_date": "2025-04-03",
+        "payment_date": "2025-04-04",
+        "amount": "0.4381"
+      },
+      {
+        "ex_dividend_date": "2025-03-06",
+        "declaration_date": "2024-12-27",
+        "record_date": "2025-03-06",
+        "payment_date": "2025-03-07",
+        "amount": "0.5989"
+      },
+      {
+        "ex_dividend_date": "2025-02-06",
+        "declaration_date": "2024-12-27",
+        "record_date": "2025-02-06",
+        "payment_date": "2025-02-07",
+        "amount": "1.0468"
+      },
+      {
+        "ex_dividend_date": "2025-01-08",
+        "declaration_date": "2024-12-27",
+        "record_date": "2025-01-08",
+        "payment_date": "2025-01-10",
+        "amount": "0.8339"
+      },
+      {
+        "ex_dividend_date": "2024-12-12",
+        "declaration_date": "2023-12-15",
+        "record_date": "2024-12-12",
+        "payment_date": "2024-12-13",
+        "amount": "1.3391"
+      },
+      {
+        "ex_dividend_date": "2024-11-14",
+        "declaration_date": "2023-12-15",
+        "record_date": "2024-11-14",
+        "payment_date": "2024-11-15",
+        "amount": "2.0231"
+      },
+      {
+        "ex_dividend_date": "2024-10-17",
+        "declaration_date": "2023-12-15",
+        "record_date": "2024-10-17",
+        "payment_date": "2024-10-18",
+        "amount": "1.1098"
+      }
+    ]
+  },
+  {
+    "ticker": "SAP.TO",
+    "currency": "CAD",
+    "dividends": [
+      {
+        "ex_dividend_date": "2025-06-17",
+        "amount": 0.19
+      },
+      {
+        "ex_dividend_date": "2025-09-02",
+        "amount": 0.2
+      }
+    ]
+  },
+  {
     "ticker": "AAPL",
     "currency": "USD",
     "dividends": [
       {
-        "ex_date": "2023-11-10",
-        "amount": 0.24,
-        "exchange_rate": null
+        "ex_dividend_date": "2025-08-11",
+        "declaration_date": "2025-07-31",
+        "record_date": "2025-08-11",
+        "payment_date": "2025-08-14",
+        "amount": "0.26"
       },
       {
-        "ex_date": "2023-08-11",
-        "amount": 0.24,
-        "exchange_rate": null
+        "ex_dividend_date": "2025-05-12",
+        "declaration_date": "2025-05-01",
+        "record_date": "2025-05-12",
+        "payment_date": "2025-05-15",
+        "amount": "0.26"
+      }
+    ]
+  },
+  {
+    "ticker": "MSFT",
+    "currency": "USD",
+    "dividends": [
+      {
+        "ex_dividend_date": "2025-08-21",
+        "declaration_date": "2025-06-10",
+        "record_date": "2025-08-21",
+        "payment_date": "2025-09-11",
+        "amount": "0.83"
       },
       {
-        "ex_date": "2023-05-12",
-        "amount": 0.24,
-        "exchange_rate": null
+        "ex_dividend_date": "2025-05-15",
+        "declaration_date": "2025-03-11",
+        "record_date": "2025-05-15",
+        "payment_date": "2025-06-12",
+        "amount": "0.83"
+      }
+    ]
+  },
+  {
+    "ticker": "ULTY",
+    "currency": "USD",
+    "dividends": [
+      {
+        "ex_dividend_date": "2025-09-04",
+        "declaration_date": "2025-03-06",
+        "record_date": "2025-09-04",
+        "payment_date": "2025-09-05",
+        "amount": "0.09"
+      },
+      {
+        "ex_dividend_date": "2025-08-28",
+        "declaration_date": "2025-03-06",
+        "record_date": "2025-08-28",
+        "payment_date": "2025-08-29",
+        "amount": "0.0949"
+      },
+      {
+        "ex_dividend_date": "2025-08-21",
+        "declaration_date": "2024-12-31",
+        "record_date": "2025-08-21",
+        "payment_date": "2025-08-22",
+        "amount": "0.1"
+      },
+      {
+        "ex_dividend_date": "2025-08-14",
+        "declaration_date": "2025-03-06",
+        "record_date": "2025-08-14",
+        "payment_date": "2025-08-15",
+        "amount": "0.1006"
+      },
+      {
+        "ex_dividend_date": "2025-08-07",
+        "declaration_date": "2025-03-06",
+        "record_date": "2025-08-07",
+        "payment_date": "2025-08-08",
+        "amount": "0.1003"
+      },
+      {
+        "ex_dividend_date": "2025-07-31",
+        "declaration_date": "None",
+        "record_date": "None",
+        "payment_date": "None",
+        "amount": "0.1008"
+      },
+      {
+        "ex_dividend_date": "2025-07-24",
+        "declaration_date": "2024-12-31",
+        "record_date": "2025-07-24",
+        "payment_date": "2025-07-25",
+        "amount": "0.1029"
+      },
+      {
+        "ex_dividend_date": "2025-07-17",
+        "declaration_date": "None",
+        "record_date": "None",
+        "payment_date": "None",
+        "amount": "0.1035"
+      },
+      {
+        "ex_dividend_date": "2025-07-10",
+        "declaration_date": "None",
+        "record_date": "None",
+        "payment_date": "None",
+        "amount": "0.096"
+      },
+      {
+        "ex_dividend_date": "2025-07-03",
+        "declaration_date": "2025-03-06",
+        "record_date": "2025-07-03",
+        "payment_date": "2025-07-07",
+        "amount": "0.0952"
+      },
+      {
+        "ex_dividend_date": "2025-06-26",
+        "declaration_date": "2024-12-31",
+        "record_date": "2025-06-26",
+        "payment_date": "2025-06-27",
+        "amount": "0.0923"
+      },
+      {
+        "ex_dividend_date": "2025-06-20",
+        "declaration_date": "2025-03-06",
+        "record_date": "2025-06-20",
+        "payment_date": "2025-06-23",
+        "amount": "0.0875"
+      },
+      {
+        "ex_dividend_date": "2025-06-12",
+        "declaration_date": "2025-03-06",
+        "record_date": "2025-06-12",
+        "payment_date": "2025-06-13",
+        "amount": "0.095"
+      },
+      {
+        "ex_dividend_date": "2025-06-05",
+        "declaration_date": "2025-03-06",
+        "record_date": "2025-06-05",
+        "payment_date": "2025-06-06",
+        "amount": "0.0945"
+      },
+      {
+        "ex_dividend_date": "2025-05-29",
+        "declaration_date": "2025-02-20",
+        "record_date": "2025-05-29",
+        "payment_date": "2025-05-30",
+        "amount": "0.0954"
+      },
+      {
+        "ex_dividend_date": "2025-05-22",
+        "declaration_date": "2025-03-06",
+        "record_date": "2025-05-22",
+        "payment_date": "2025-05-23",
+        "amount": "0.0979"
+      },
+      {
+        "ex_dividend_date": "2025-05-15",
+        "declaration_date": "2025-03-06",
+        "record_date": "2025-05-15",
+        "payment_date": "2025-05-16",
+        "amount": "0.1059"
+      },
+      {
+        "ex_dividend_date": "2025-05-08",
+        "declaration_date": "2025-03-06",
+        "record_date": "2025-05-08",
+        "payment_date": "2025-05-09",
+        "amount": "0.1181"
+      },
+      {
+        "ex_dividend_date": "2025-05-01",
+        "declaration_date": "2024-12-31",
+        "record_date": "2025-05-01",
+        "payment_date": "2025-05-02",
+        "amount": "0.0936"
+      },
+      {
+        "ex_dividend_date": "2025-04-24",
+        "declaration_date": "2025-03-06",
+        "record_date": "2025-04-24",
+        "payment_date": "2025-04-25",
+        "amount": "0.0836"
+      },
+      {
+        "ex_dividend_date": "2025-04-17",
+        "declaration_date": "2025-03-06",
+        "record_date": "2025-04-17",
+        "payment_date": "2025-04-21",
+        "amount": "0.0852"
+      },
+      {
+        "ex_dividend_date": "2025-04-10",
+        "declaration_date": "2025-03-06",
+        "record_date": "2025-04-10",
+        "payment_date": "2025-04-11",
+        "amount": "0.0822"
+      },
+      {
+        "ex_dividend_date": "2025-04-03",
+        "declaration_date": "2024-12-31",
+        "record_date": "2025-04-03",
+        "payment_date": "2025-04-04",
+        "amount": "0.0916"
+      },
+      {
+        "ex_dividend_date": "2025-03-27",
+        "declaration_date": "2025-03-06",
+        "record_date": "2025-03-27",
+        "payment_date": "2025-03-28",
+        "amount": "0.0986"
+      },
+      {
+        "ex_dividend_date": "2025-03-20",
+        "declaration_date": "2025-03-06",
+        "record_date": "2025-03-20",
+        "payment_date": "2025-03-21",
+        "amount": "0.0977"
+      },
+      {
+        "ex_dividend_date": "2025-03-13",
+        "declaration_date": "2025-03-06",
+        "record_date": "2025-03-13",
+        "payment_date": "2025-03-14",
+        "amount": "0.1025"
       }
     ]
   },
@@ -27,6 +338,26 @@
       {
         "ex_dividend_date": "2025-07-24",
         "amount": 1.54
+      }
+    ]
+  },
+  {
+    "ticker": "CNQ.TO",
+    "currency": "CAD",
+    "dividends": [
+      {
+        "ex_dividend_date": "2025-06-13",
+        "amount": 0.588
+      }
+    ]
+  },
+  {
+    "ticker": "MFC.TO",
+    "currency": "CAD",
+    "dividends": [
+      {
+        "ex_dividend_date": "2025-08-20",
+        "amount": 0.44
       }
     ]
   }
