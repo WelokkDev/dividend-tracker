@@ -1,0 +1,7 @@
+# Core dependencies for Dividend Tracker
+yfinance>=0.2.18
+requests>=2.31.0
+openpyxl>=3.1.2
+python-dotenv>=1.0.0sCa
+pandas>=2.0.0
+

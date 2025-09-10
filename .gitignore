@@ -1,3 +1,5 @@
 .env
 dividends-sheet.xlsx
 venv/
+dividend_data.json
+~$dividends_sheet.xlsx
