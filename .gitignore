@@ -1,5 +1,16 @@
+# Secrets
 .env
-dividends-sheet.xlsx
+
+# Virtual environment
 venv/
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Generated data & output
 dividend_data.json
-~$dividends_sheet.xlsx
+dividends-sheet.xlsx
+
+# Excel lock files
+~$*.xlsx
